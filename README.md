@@ -42,11 +42,6 @@ Execute the docker command to build application
 docker compose up -d --build
 ```
 
-Run the tests to verify that the installation completed successfully.
-```bash
-docker exec -it weather_city-api pytest
-```
-
 #### Running after build 
 
 ```bash
@@ -76,5 +71,5 @@ To details about architecture, access this [page](docs/architecture.md).
 ### Running tests
 
 ```bash
-docker exec -it api pytest
+docker exec -it weather_city-api pytest
 ```
