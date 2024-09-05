@@ -69,7 +69,7 @@ curl -X 'GET' \
 
 In the browser, access http://0.0.0.0:8004/docs, for access to API methods in OpenAPI format.
 
-To details about architecture, access this [page](https://home.openweathermap.org/users/sign_up).
+To details about architecture, access this [page](docs/architecture.md).
 
 ------
 
