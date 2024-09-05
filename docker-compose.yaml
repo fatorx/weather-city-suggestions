@@ -1,0 +1,30 @@
+
+services:
+  api:
+    container_name: ${PROJECT_NAME}-api
+    build:
+      context: .
+      dockerfile: ${DOCKER_FILE}
+    working_dir: /api
+    volumes:
+      - ./:/api
+    restart: on-failure
+    command: uvicorn app.main:app --workers 1 --host 0.0.0.0 --port 8000 --reload
+    env_file:
+      - .env
+    ports:
+      - "8004:8000"
+      - "23:22"
+
+  storage.redis:
+    image: redis:alpine
+    container_name: ${PROJECT_NAME}-storage
+
+  storage.admin:
+    image: erikdubbelboer/phpredisadmin
+    container_name: ${PROJECT_NAME}-storage-admin
+    environment:
+      - REDIS_1_HOST=storage.redis
+      - REDIS_1_NAME=MyRedis
+    ports:
+      - "8091:80"
